@@ -1,4 +1,4 @@
-code basic_operations.py  # This is not Python, but a command to open the file in an editor
+# This is not Python, but a command to open the file in an editor
 # This is where you use Python to write the script
 
 # Assign specific values to two variables
