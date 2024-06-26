@@ -12,4 +12,3 @@ def multiplication_table():
 # Run the multiplication table generator
 if __name__ == "__main__":
     multiplication_table()
-    
