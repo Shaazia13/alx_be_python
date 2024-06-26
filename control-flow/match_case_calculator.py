@@ -7,29 +7,29 @@ def get_number(prompt):
         except ValueError:
             print("Invalid input. Please enter a number.")
 
-# Ask the user for two numbers
-num1 = get_number("Enter the first number: ")
-num2 = get_number("Enter the second number: ")
-
-# Ask the user for the operation
-operation = input("Choose the operation (+, -, *, /): ").strip()
-
-# Perform the calculation using match case
-match operation:
-    case '+':
-        result = num1 + num2
-        print(f"The result is {result}.")
-    case '-':
-        result = num1 - num2
-        print(f"The result is {result}.")
-    case '*':
-        result = num1 * num2
-        print(f"The result is {result}.")
-    case '/':
+# Function to perform calculations based on user input
+def calculate(num1, num2, operation):
+    if operation == '+':
+        return num1 + num2
+    elif operation == '-':
+        return num1 - num2
+    elif operation == '*':
+        return num1 * num2
+    elif operation == '/':
         if num2 != 0:
-            result = num1 / num2
-            print(f"The result is {result}.")
+            return num1 / num2
         else:
-            print("Cannot divide by zero.")
-    case _:
-        print("Invalid operation. Please choose one of +, -, *, /.")
+            return "Cannot divide by zero."
+    else:
+        return "Invalid operation. Please choose one of +, -, *, /."
+
+# Main program execution
+if __name__ == "__main__":
+    num1 = get_number("Enter the first number: ")
+    num2 = get_number("Enter the second number: ")
+
+    operation = input("Choose the operation (+, -, *, /): ").strip()
+
+    result = calculate(num1, num2, operation)
+    print(f"The result is {result}.")
+
