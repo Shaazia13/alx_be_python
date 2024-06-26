@@ -1,35 +1,37 @@
 # match_case_calculator.py
 
-def get_number(prompt):
-    while True:
-        try:
-            return float(input(prompt))
-        except ValueError:
-            print("Invalid input. Please enter a number.")
+def match_case_calculator():
+    # Input from user
+    num1 = float(input("Enter the first number: "))
+    num2 = float(input("Enter the second number: "))
+    operation = input("Choose the operation (+, -, *, /): ")
 
-# Function to perform calculations based on user input
-def calculate(num1, num2, operation):
+    # Match case for operations
     match operation:
         case '+':
-            return num1 + num2
+            result = num1 + num2
+            operation_text = "addition"
         case '-':
-            return num1 - num2
+            result = num1 - num2
+            operation_text = "subtraction"
         case '*':
-            return num1 * num2
+            result = num1 * num2
+            operation_text = "multiplication"
         case '/':
             if num2 != 0:
-                return num1 / num2
+                result = num1 / num2
+                operation_text = "division"
             else:
-                return "Cannot divide by zero."
+                print("Cannot divide by zero.")
+                return
         case _:
-            return "Invalid operation. Please choose one of +, -, *, /."
+            print("Invalid operation entered.")
+            return
 
-# Main program execution
+    # Output the result
+    if operation_text:
+        print(f"The result of {operation_text} is {result}.")
+
+# Run the calculator
 if __name__ == "__main__":
-    num1 = get_number("Enter the first number: ")
-    num2 = get_number("Enter the second number: ")
-
-    operation = input("Choose the operation (+, -, *, /): ").strip()
-
-    result = calculate(num1, num2, operation)
-    print(f"The result is {result}.")
+    match_case_calculator()
