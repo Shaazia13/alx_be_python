@@ -1,3 +1,5 @@
+# match_case_calculator.py
+
 def get_number(prompt):
     while True:
         try:
@@ -7,19 +9,20 @@ def get_number(prompt):
 
 # Function to perform calculations based on user input
 def calculate(num1, num2, operation):
-    if operation == '+':
-        return num1 + num2
-    elif operation == '-':
-        return num1 - num2
-    elif operation == '*':
-        return num1 * num2
-    elif operation == '/':
-        if num2 != 0:
-            return num1 / num2
-        else:
-            return "Cannot divide by zero."
-    else:
-        return "Invalid operation. Please choose one of +, -, *, /."
+    match operation:
+        case '+':
+            return num1 + num2
+        case '-':
+            return num1 - num2
+        case '*':
+            return num1 * num2
+        case '/':
+            if num2 != 0:
+                return num1 / num2
+            else:
+                return "Cannot divide by zero."
+        case _:
+            return "Invalid operation. Please choose one of +, -, *, /."
 
 # Main program execution
 if __name__ == "__main__":
