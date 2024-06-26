@@ -1,5 +1,3 @@
-# match_case_calculator.py
-
 def get_number(prompt):
     while True:
         try:
