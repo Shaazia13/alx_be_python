@@ -1,5 +1,3 @@
-# match_case_calculator.py
-
 def get_number(prompt):
     while True:
         try:
@@ -32,4 +30,3 @@ if __name__ == "__main__":
 
     result = calculate(num1, num2, operation)
     print(f"The result is {result}.")
-
