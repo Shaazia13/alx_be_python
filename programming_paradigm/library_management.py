@@ -1,5 +1,4 @@
-# programming_paradigm/library_management.py
-
+# Define the Book class
 class Book:
     def __init__(self, title, author):
         self.title = title
@@ -23,6 +22,7 @@ class Book:
     def is_available(self):
         return not self._is_checked_out
 
+# Define the Library class
 class Library:
     def __init__(self):
         self._books = []
@@ -34,27 +34,51 @@ class Library:
         for book in self._books:
             if book.title == title:
                 if book.check_out():
-                    print(f"{title} has been checked out.")
+                    print(f"Checked out: '{title}'")
+                    return
                 else:
-                    print(f"{title} is not available for checkout.")
-                return
-        print(f"{title} is not in the library.")
+                    print(f"'{title}' is already checked out.")
+                    return
+        print(f"'{title}' not found in library.")
 
     def return_book(self, title):
         for book in self._books:
             if book.title == title:
                 if book.return_book():
-                    print(f"{title} has been returned.")
+                    print(f"Returned: '{title}'")
+                    return
                 else:
-                    print(f"{title} was not checked out.")
-                return
-        print(f"{title} is not in the library.")
+                    print(f"'{title}' was not checked out.")
+                    return
+        print(f"'{title}' not found in library.")
 
     def list_available_books(self):
-        available_books = [book for book in self._books if book.is_available()]
-        if available_books:
-            print("Available books:")
-            for book in available_books:
-                print(f"{book.title} by {book.author}")
+        if not self._books:
+            print("No books in the library.")
         else:
-            print("No books available.")
+            print("Available books:")
+            for book in self._books:
+                if book.is_available():
+                    print(f"{book.title} by {book.author}")
+
+# Testing the classes if executed directly
+if __name__ == "__main__":
+    library = Library()
+
+    # Adding books to the library
+    library.add_book(Book("Brave New World", "Aldous Huxley"))
+    library.add_book(Book("1984", "George Orwell"))
+
+    # Initial list of available books
+    print("Available books after setup:")
+    library.list_available_books()
+
+    # Simulate checking out a book
+    library.check_out_book("1984")
+    print("\nAvailable books after checking out '1984':")
+    library.list_available_books()
+
+    # Simulate returning a book
+    library.return_book("1984")
+    print("\nAvailable books after returning '1984':")
+    library.list_available_books()
