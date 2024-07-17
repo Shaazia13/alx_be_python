@@ -33,4 +33,6 @@ class Library:
 
     def list_books(self):
         for book in self.books:
-           
+            print(book)
+
+# You can test this with the provided main.py script
